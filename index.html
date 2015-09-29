@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Frontend</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css"></link>
+</head>
+
+<body>
+  <div id="toc" class="container"></div>
+  <div id="content" class="container"></div>
+  <script type="text/x-template" id="toc-template">
+    <h3><a href="#set-<%= link %>"><%= label %></a></h3>
+    <ul>
+      <% _.each(rules, function(rule){ %>
+        <li><a href="#rule-<%= link %>-<%= rule.link %>"><%= rule.label %></a></li>
+      <% }) %>
+    </ul>
+  </script>
+  <script type="text/x-template" id="content-template">
+    <h2 id="set-<%= link %>"><%= label %></h2>
+    <ul>
+    <%  _.each(rules, function(rule){ %>
+      <li>
+        <h3 id="rule-<%= link %>-<%= rule.link %>"><%= rule.label %></h3>
+        <div><%= rule.content.replace(/ %(.+?)% /g,' <a target="_blank" href="\$1">\$1</a>') %></div>
+      </li>
+    <% }) %>
+    </ul>
+  </script>
+  <script type="application/javascript" src="lodash.min.js"></script>
+  <script type="application/javascript" src="rules.js"></script>
+  <script type="application/javascript">
+    var tocTemplate = _.template(document.querySelector('#toc-template').textContent);
+    var contentTemplate = _.template(document.querySelector('#content-template').textContent);
+    var toc = document.querySelector('#toc');
+    var content = document.querySelector('#content');
+    window.rules.forEach(function(set, index) {
+      toc.insertAdjacentHTML('beforeend', tocTemplate(set));
+      content.insertAdjacentHTML('beforeend', contentTemplate(set));
+    });
+  </script>
+</body>
+
+</html>

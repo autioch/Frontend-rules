@@ -1,0 +1,61 @@
+html {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #f8f8ff;
+  color: #333
+}
+.container {
+  bottom: 0;
+  top: 0em;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0 1em;
+  box-sizing: border-box;
+}
+ul {
+  list-style-type: none
+}
+a {
+  text-decoration: none;
+  color: #0645ad
+}
+#toc {
+  left: 0;
+  width: 20%;
+  scroll-behavior: smooth;
+  counter-reset: section;
+  counter-reset: item;
+}
+#toc h3 {
+  counter-increment: section;
+  counter-reset: item;
+}
+#toc h3 > a:before {
+  content: counter(section);
+  margin-right: 0.5em;
+}
+#toc li > a:before {
+  counter-increment: item;
+  content: counter(section) "." counter(item);
+  margin-right: 0.5em;
+}
+#content {
+  right: 0;
+  width: 80%;
+  scroll-behavior: smooth;
+  counter-reset: section;
+  counter-reset: item;
+}
+#content h2 {
+  counter-increment: section;
+  counter-reset: item;
+}
+#content h2:before {
+  content: counter(section);
+  margin-right: 0.5em;
+}
+#content h3:before {
+  counter-increment: item;
+  content: counter(section) "." counter(item);
+  margin-right: 0.5em;
+}
