@@ -28,7 +28,7 @@ window.rules = [{
   "rules": [{
     "link": "formatting",
     "label": "Formatting",
-    "content": "Extra spaces and line breaks make code more readible. Most of the editors have a feature to format code for you. In Visual Studio, it will be Ctrl + K, Ctrl + D. In Netbeans, Ctrl + Shift + F."
+    "content": "Extra spaces and line breaks make code more readable. Most of the editors have a feature to format code for you. In Visual Studio, it will be Ctrl + K, Ctrl + D. In Netbeans, Ctrl + Shift + F."
   }, {
     "link": "indents",
     "label": "Indents",
